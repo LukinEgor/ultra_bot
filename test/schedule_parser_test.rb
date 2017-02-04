@@ -4,11 +4,17 @@ require './src/schedule_parser.rb'
 class ScheduleParserTest < Test::Unit::TestCase
   def test_first_train
     schedule = ScheduleParser.parse
-    assert_equal(schedule[1][1], "ABT")
+    exercise = schedule["Monday"]
+      .detect{ |ex| ex[:time] == "8:00"}
+
+    assert_equal(exercise[:name], "ABT")
   end
 
   def test_last_train
     schedule = ScheduleParser.parse
-    assert_equal(schedule[7][11], "CROSSFIT")
+    exercise = schedule["Sunday"]
+      .detect{ |ex| ex[:time] == "19:00"}
+
+    assert_equal(exercise[:name], "CROSSFIT")
   end
 end
