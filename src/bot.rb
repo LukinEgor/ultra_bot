@@ -1,8 +1,7 @@
 require 'telegram/bot'
-require './config.rb'
 require './src/schedule_adapter.rb'
 
-token = Config.token
+token = ENV["TELEGRAM_TOKEN"]
 schedule = ScheduleAdapter.new
 answers_keyboard =
   Telegram::Bot::Types::ReplyKeyboardMarkup
