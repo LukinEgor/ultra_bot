@@ -1,1 +1,1 @@
-web: make run
+bot: make run
