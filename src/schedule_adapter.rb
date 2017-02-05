@@ -8,13 +8,13 @@ class ScheduleAdapter
   end
 
   def now
-    weekday = @days_name[Date.today.wday]
+    weekday = @days_name[Date.today.wday == 0 ? 7 : Date.today.wday]
     exercises = @api[weekday]
     format(exercises)
   end
 
   def tomorrow
-    weekday = @days_name[Date.today.wday == 7 ? 1 : Date.today.wday + 1]
+    weekday = @days_name[Date.today.wday + 1]
     exercises = @api[weekday]
     format(exercises)
   end
